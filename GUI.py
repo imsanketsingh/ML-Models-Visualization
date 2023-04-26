@@ -7,7 +7,32 @@ from streamlit_option_menu import option_menu
 
 
 st.set_page_config(page_title="ML Algo Visualizer", page_icon="🥽")
-choose = option_menu("", ["KMeans"],
+
+st.markdown("""
+        <style>
+            .greeting {
+                font-size:20px;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                animation: fadeIn 3s;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+        </style>
+        """, unsafe_allow_html=True)
+
+st.markdown('<h1 class="greeting">Hey Stranger, you are welcome!</h1>', unsafe_allow_html=True)
+
+choose = option_menu("", ["Blank", "KMeans"],
                          menu_icon="list", default_index=0,
                          styles={
         "container": {"padding": "5!important", "background-color": "#fafafa"},
@@ -16,8 +41,11 @@ choose = option_menu("", ["KMeans"],
         "nav-link-selected": {"background-color": "#24A608"},
     }
     ) 
+if choose == "Blank":
+    st.markdown('<p class="greeting">Choose the Algo</p>', unsafe_allow_html=True)
 
 if choose == "KMeans":
+    st.markdown('<p class="greeting">Kindly check the new window just opened</p>', unsafe_allow_html=True)
 
     def show_entry():
         
@@ -57,4 +85,4 @@ if choose == "KMeans":
     plot_canvas = Canvas(master)
     plot_canvas.grid(row=6, columnspan=2)
 
-    mainloop()
+    master.mainloop()
