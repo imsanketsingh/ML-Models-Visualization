@@ -2,5 +2,4 @@ streamlit
 streamlit_option_menu
 numpy
 pandas
-tkinter
 matplotlib
