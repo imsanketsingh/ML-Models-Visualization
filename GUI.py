@@ -17,7 +17,7 @@ choose = option_menu("", ["KMeans"],
     }
     ) 
 
-if choose == "Home":
+if choose == "KMeans":
 
     def show_entry():
         
