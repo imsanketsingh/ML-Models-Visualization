@@ -54,14 +54,14 @@ def findClusters(num_cl, bucket):
     clusters = []
     for each in cluster_dict.keys():
         clusters.append(cluster_dict[each])
-    return clusters
+    return clusters, init_centroids
 
 
 def kMeans_(k, fixed_bucket_size, min_bucket_val, max_bucket_val):
     bucket = get_bucket(fixed_bucket_size, min_bucket_val, max_bucket_val)
-    output = findClusters(k,bucket)
-    from plot import plotTheClusters
-    return plotTheClusters(output)
+    output, init_centroids = findClusters(k,bucket)
+    from plot import plotTheClusters, plot_general
+    return plot_general(bucket), plotTheClusters(output)
 
 
 

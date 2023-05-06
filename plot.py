@@ -1,8 +1,17 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+def plot_general(init_centroids):
+    x_values = np.linspace(0, len(init_centroids), len(init_centroids))
+    plt.scatter(x_values, init_centroids)
+    plt.xlabel('Index')
+    plt.ylabel('Values')
+    plt.title('Before Clustering Plot')
+    fig = plt.gcf()
+    plt.close()
+    return fig
+
 def plotTheClusters(output):
-    plt.figure(figsize=(16,6))
 
     colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'w', 
     'tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan', 
@@ -25,21 +34,12 @@ def plotTheClusters(output):
     'violet', 
     'wheat', 'white']
 
-    plt.subplot(121)
 
     for i, cluster in enumerate(output):
         plt.scatter([i]*len(cluster), cluster, color=colors[i])
     plt.xlabel('Cluster')
     plt.ylabel('Values')
     plt.title('Clusters Plot')
-
-
-    plt.subplot(122)
-    flat_data = np.array([val for sublist in output for val in sublist])
-    plt.plot(np.arange(len(flat_data)), flat_data, 'o')
-    plt.xlabel('Index')
-    plt.ylabel('Values')
-    plt.title('Flat Data Plot')
     
     fig = plt.gcf()
     plt.close()
